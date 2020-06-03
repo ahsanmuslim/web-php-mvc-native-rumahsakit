@@ -1,0 +1,19 @@
+Options -Multiviews
+
+#menjalankan proses Rewrite dengan menjalankan Engine Rewrite
+RewriteEngine On 
+
+#aturan untuk mengabaikan jika user mengakses Folder pada url
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#aturan untuk mengabaikan jika user mengakses file yang namanya sama pada file website kita pada url
+RewriteCond %{REQUEST_FILENAME} !-f 
+
+#aturan untuk menulis ulang urlnya atau REGEX Reguler Expression
+# ^ => artinya kita akan membaca apapun yang di tulis di url mulai dari awal berarti mulai dari /public/...
+# (.*) => ambil apapun dari karakter dari awal sampai selesai kecuali Enter
+# index.php => lalu arahkan ke index.php
+# url => akan mengirimkan url data
+# =$1 => simpan dalam variable ini
+# [L] => kalau ada rule yang sudah terpenuhi maka jangan jalankan rule yang lain 
+RewriteRule ^(.*)$ index.php?url=$1 [L]

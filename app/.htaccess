@@ -1,0 +1,3 @@
+
+#mencegah agar tidak bisa browsing folder App pada website kita
+Options -Indexes
